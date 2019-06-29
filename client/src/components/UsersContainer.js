@@ -3,23 +3,22 @@ import request from "superagent";
 import Users from "./Users";
 
 export default class UsersContainer extends Component {
-    state = { users: null };
+    state = {
+        users: null
+    };
 
     componentDidMount() {
         request
             .get('http://localhost:3001/api/users')
-            .then(response => {
-                const users = Object.keys(response.body.message);
-                this.updateBreeds(users);
-            })
-            .catch(console.error);
+            .then(response => this.setState({ users: response.body.data }))
+            .catch(console.error)
     }
 
-    updateBreeds(users) {
-        this.setState({
-            users: users
-        });
-    }
+    // upddateUsers(users) {
+    //   this.setState({
+    //     users: users
+    //   })
+    // }
 
     render() {
         return <Users users={this.state.users} />;

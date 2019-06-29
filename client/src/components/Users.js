@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export default class Users extends Component {
     renderUser(user) {
         return (
-            <li key={user}>
-                <Link to={`/users/${user}`}>{user}</Link>
+            <li key={user.id}>
+                <Link to={`/users/${user.name}`}>{user.name}</Link>
             </li>
         );
     }
