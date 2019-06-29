@@ -21,8 +21,14 @@ class App extends Component {
   componentDidMount() {
     request
       .get('http://localhost:3001/api/users')
-      .then(console.log)
+      .then(response => this.upddateUsers(response.body.data))
       .catch(console.error)
+  }
+
+  upddateUsers(users) {
+    this.setState({
+      users: users
+    })
   }
 
   render() {
